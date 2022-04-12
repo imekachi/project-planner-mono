@@ -1,0 +1,13 @@
+{
+  "name": "postcss-config",
+  "version": "0.0.0",
+  "license": "MIT",
+  "files": [
+    "postcss.config.js"
+  ],
+  "devDependencies": {
+    "postcss": "^8.4.12",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.4.3"
+  }
+}
