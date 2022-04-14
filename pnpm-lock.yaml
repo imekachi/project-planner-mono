@@ -51,6 +51,7 @@ importers:
       eslint-plugin-import: ^2.26.0
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-react: 7.28.0
+      eslint-plugin-unused-imports: ^2.0.0
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.18.0
       eslint-config-next: 12.1.4
@@ -58,6 +59,8 @@ importers:
       eslint-plugin-import: 2.26.0
       eslint-plugin-prettier: 4.0.0_ad206096bdee02cd87fd9bdfe684ae30
       eslint-plugin-react: 7.28.0
+    devDependencies:
+      eslint-plugin-unused-imports: 2.0.0_4c318af2900f55db4824b0823537bca2
 
   packages/postcss-config:
     specifiers:
@@ -1260,6 +1263,25 @@ packages:
       semver: 6.3.0
       string.prototype.matchall: 4.0.7
     dev: false
+
+  /eslint-plugin-unused-imports/2.0.0_4c318af2900f55db4824b0823537bca2:
+    resolution: {integrity: sha512-3APeS/tQlTrFa167ThtP0Zm0vctjr4M44HMpeg1P4bK6wItarumq0Ma82xorMKdFsWpphQBlRPzw/pxiVELX1A==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': ^5.0.0
+      eslint: ^8.0.0
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 5.18.0
+      eslint-rule-composer: 0.3.0
+    dev: true
+
+  /eslint-rule-composer/0.3.0:
+    resolution: {integrity: sha512-bt+Sh8CtDmn2OajxvNO+BX7Wn4CIWMpTRm3MaiKPCQcnnlm0CS2mhui6QaoeQugs+3Kj2ESKEEGJUdVafwhiCg==}
+    engines: {node: '>=4.0.0'}
+    dev: true
 
   /eslint-scope/5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}

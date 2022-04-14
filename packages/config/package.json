@@ -14,5 +14,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "7.28.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-unused-imports": "^2.0.0"
   }
 }
