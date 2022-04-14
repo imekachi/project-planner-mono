@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "note-next",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,17 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.0.8",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "tailwindcss": "^3.0.23",
+    "next": "12.1.5",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "tailwindcss": "^3.0.24",
     "ui": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
-    "@types/react": "17.0.37",
+    "@types/react": "18.0.4",
     "config": "workspace:*",
-    "eslint": "7.32.0",
+    "eslint": "8.13.0",
     "next-transpile-modules": "9.0.0",
     "postcss-config": "workspace:*",
     "tsconfig": "workspace:*",
