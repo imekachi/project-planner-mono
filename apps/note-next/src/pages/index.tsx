@@ -1,10 +1,83 @@
+import { PlusIcon } from '@heroicons/react/outline'
 import { Button } from 'ui'
 
 export default function Web() {
   return (
     <div>
-      <h1 className="text-xl text-red-400">Web</h1>
-      <Button />
+      <main className="mx-auto max-w-5xl pt-20 text-neutral-600">
+        <div className="mb-6 text-center">
+          <h1 className="text-4xl font-extrabold text-neutral-700 sm:text-5xl lg:text-6xl">
+            Notes
+          </h1>
+        </div>
+        <section className="grid grid-cols-4 divide-x overflow-hidden rounded-lg border border-neutral-300">
+          <div id="note-list" className="bg-neutral-200 py-4">
+            <div className="mb-2 flex items-center justify-between py-2 px-6">
+              <h2 className="text-sm font-bold uppercase text-neutral-400">
+                Your notes
+              </h2>
+              <button
+                title="Add a new note"
+                className="h-5 w-5 rounded border border-neutral-400 hover:bg-neutral-100"
+              >
+                <PlusIcon className="mx-auto h-3 w-3" />
+              </button>
+            </div>
+            <ul className="">
+              <li className="">
+                <a
+                  href="#"
+                  className="block cursor-pointer bg-neutral-100 py-2 px-6 font-bold"
+                >
+                  Note 1
+                </a>
+              </li>
+              <li className="">
+                <a
+                  href="#"
+                  className="block cursor-pointer py-2 px-6 hover:bg-neutral-100"
+                >
+                  Note 2
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            id="note-content"
+            className="col-span-full col-start-2 bg-[#FFFEFC] py-4 px-6 pb-4"
+          >
+            <div id="status-bar" className="mb-4 flex justify-between text-xs">
+              <div></div>
+              <div id="status-right" className="flex justify-end">
+                <span className="rounded-lg bg-green-100 py-1 px-2 text-green-600">
+                  Saved
+                </span>
+              </div>
+            </div>
+            <div className="mx-auto max-w-prose">
+              <div
+                id="note-title"
+                className="mb-4 text-lg font-bold focus-visible:outline-0"
+                contentEditable
+                suppressContentEditableWarning
+              >
+                Note 1
+              </div>
+              <div
+                id="content"
+                contentEditable
+                className="pb-6 focus-visible:outline-0"
+                suppressContentEditableWarning
+              >
+                note content
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <div className="hidden">
+        <Button />
+      </div>
     </div>
   )
 }
