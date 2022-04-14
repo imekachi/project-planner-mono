@@ -10,34 +10,7 @@ importers:
       prettier: 2.6.2
       turbo: 1.2.3
 
-  apps/docs:
-    specifiers:
-      '@types/node': ^17.0.12
-      '@types/react': 18.0.4
-      config: workspace:*
-      eslint: 8.13.0
-      next: 12.1.5
-      next-transpile-modules: 9.0.0
-      react: 18.0.0
-      react-dom: 18.0.0
-      tsconfig: workspace:*
-      typescript: ^4.5.3
-      ui: workspace:*
-    dependencies:
-      next: 12.1.5_react-dom@18.0.0+react@18.0.0
-      react: 18.0.0
-      react-dom: 18.0.0_react@18.0.0
-      ui: link:../../packages/ui
-    devDependencies:
-      '@types/node': 17.0.23
-      '@types/react': 18.0.4
-      config: link:../../packages/config
-      eslint: 8.13.0
-      next-transpile-modules: 9.0.0
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.6.3
-
-  apps/planner-next:
+  apps/note-next:
     specifiers:
       '@types/node': ^17.0.12
       '@types/react': 18.0.4
@@ -81,7 +54,7 @@ importers:
       eslint-config-next: 12.1.4
       eslint-config-prettier: 8.5.0
       eslint-plugin-import: 2.26.0
-      eslint-plugin-prettier: 4.0.0_eslint-config-prettier@8.5.0
+      eslint-plugin-prettier: 4.0.0_ad206096bdee02cd87fd9bdfe684ae30
       eslint-plugin-react: 7.28.0
 
   packages/postcss-config:
@@ -1213,7 +1186,7 @@ packages:
       minimatch: 3.1.2
     dev: false
 
-  /eslint-plugin-prettier/4.0.0_eslint-config-prettier@8.5.0:
+  /eslint-plugin-prettier/4.0.0_ad206096bdee02cd87fd9bdfe684ae30:
     resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -1225,6 +1198,7 @@ packages:
         optional: true
     dependencies:
       eslint-config-prettier: 8.5.0
+      prettier: 2.6.2
       prettier-linter-helpers: 1.0.0
     dev: false
 
