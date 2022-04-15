@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev ./src/server.ts",
+    "prebuild": "prisma generate",
+    "build": "tsc",
+    "start": "node ./dist/server.js",
+    "db-ui": "prisma studio",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=16.3.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.12.0",
+    "apollo-server": "^3.6.7",
+    "class-validator": "^0.13.2",
+    "graphql": "^15.3.0",
+    "graphql-fields": "^2.0.3",
+    "graphql-scalars": "^1.17.0",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.3.1",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/graphql-fields": "^1.3.4",
+    "@types/node": "^17.0.24",
+    "config": "workspace:*",
+    "prisma": "^3.12.0",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig": "workspace:*",
+    "typegraphql-prisma": "^0.20.1",
+    "typescript": "^4.5.3"
+  }
+}
