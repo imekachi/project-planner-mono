@@ -2,7 +2,7 @@ import { PlusIcon } from '@heroicons/react/outline'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 import { Button } from 'ui'
 
-export default function Web() {
+export default function Index() {
   return (
     <div>
       <main className="mx-auto max-w-5xl pt-20 text-neutral-600">
