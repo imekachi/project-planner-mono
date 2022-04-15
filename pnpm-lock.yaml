@@ -27,6 +27,7 @@ importers:
       postcss-config: workspace:*
       react: 18.0.0
       react-dom: 18.0.0
+      react-textarea-autosize: ^8.3.3
       tailwindcss: ^3.0.24
       tsconfig: workspace:*
       typescript: ^4.5.3
@@ -36,6 +37,7 @@ importers:
       next: 12.1.5_react-dom@18.0.0+react@18.0.0
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
+      react-textarea-autosize: 8.3.3_@types+react@18.0.5+react@18.0.0
       tailwindcss: 3.0.24
       ui: link:../../packages/ui
     devDependencies:
@@ -2558,6 +2560,20 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
+  /react-textarea-autosize/8.3.3_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-2XlHXK2TDxS6vbQaoPbMOfQ8GK7+irc2fVK6QFIcC8GOnH3zI/v481n+j1L0WaPVvKxwesnY93fEfH++sus2rQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0
+    dependencies:
+      '@babel/runtime': 7.17.9
+      react: 18.0.0
+      use-composed-ref: 1.2.1_react@18.0.0
+      use-latest: 1.2.0_@types+react@18.0.5+react@18.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /react/18.0.0:
     resolution: {integrity: sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A==}
     engines: {node: '>=0.10.0'}
@@ -2995,6 +3011,41 @@ packages:
     dependencies:
       punycode: 2.1.1
     dev: true
+
+  /use-composed-ref/1.2.1_react@18.0.0:
+    resolution: {integrity: sha512-6+X1FLlIcjvFMAeAD/hcxDT8tmyrWnbSPMU0EnxQuDLIxokuFzWliXBiYZuGIx+mrAMLBw0WFfCkaPw8ebzAhw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0
+    dependencies:
+      react: 18.0.0
+    dev: false
+
+  /use-isomorphic-layout-effect/1.1.2_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      react: 18.0.0
+    dev: false
+
+  /use-latest/1.2.0_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-d2TEuG6nSLKQLAfW3By8mKr8HurOlTkul0sOpxbClIv4SQ4iOd7BYr7VIzdbktUCnv7dua/60xzd8igMU6jmyw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      react: 18.0.0
+      use-isomorphic-layout-effect: 1.1.2_@types+react@18.0.5+react@18.0.0
+    dev: false
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}

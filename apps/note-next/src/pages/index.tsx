@@ -1,4 +1,5 @@
 import { PlusIcon } from '@heroicons/react/outline'
+import ReactTextareaAutosize from 'react-textarea-autosize'
 import { Button } from 'ui'
 
 export default function Web() {
@@ -54,23 +55,19 @@ export default function Web() {
                 </span>
               </div>
             </div>
-            <div className="mx-auto max-w-prose">
-              <div
+            <div className="mx-auto">
+              <input
+                type="text"
                 id="note-title"
-                className="mb-4 text-lg font-bold focus-visible:outline-0"
-                contentEditable
-                suppressContentEditableWarning
-              >
-                Note 1
-              </div>
-              <div
+                className="mb-4 w-full text-lg font-bold focus-visible:outline-0"
+                placeholder="Title"
+              />
+              <ReactTextareaAutosize
                 id="content"
-                contentEditable
-                className="pb-6 focus-visible:outline-0"
-                suppressContentEditableWarning
-              >
-                note content
-              </div>
+                className="w-full"
+                minRows={6}
+                placeholder="Type your note here..."
+              />
             </div>
           </div>
         </section>
