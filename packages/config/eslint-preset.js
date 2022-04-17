@@ -9,6 +9,7 @@ module.exports = {
       rootDir: ['apps/*/', 'packages/*/'],
     },
   },
+  ignorePatterns: ['build/**/*.*', 'dist/**/*.*', 'node_modules/**/*.*'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-key': 'off',
