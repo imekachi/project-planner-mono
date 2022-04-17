@@ -9,6 +9,17 @@
     },
     "dev": {
       "cache": false
+    },
+    "backend#healthcheck:dev": {
+      "cache": false
+    },
+    "gql-schema#dev": {
+      "cache": false,
+      "dependsOn": ["backend#healthcheck:dev"]
+    },
+    "note-next#dev": {
+      "cache": false,
+      "dependsOn": ["gql-schema#dev"]
     }
   }
 }

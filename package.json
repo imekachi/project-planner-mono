@@ -9,7 +9,9 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:backend": "turbo run dev --filter=backend",
     "dev:note-next": "turbo run dev --filter=note-next",
+    "codegen": "turbo run dev --filter=gql-schema",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
