@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.10",
     "@heroicons/react": "^1.0.6",
+    "gql-schema": "workspace:*",
+    "graphql": "^15.3.0",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
@@ -28,6 +31,7 @@
     "next-transpile-modules": "9.0.0",
     "postcss-config": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.3",
+    "type-utils": "workspace:*"
   }
 }
