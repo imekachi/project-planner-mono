@@ -1,11 +1,30 @@
 import { PlusIcon } from '@heroicons/react/outline'
+import { NotesDocument, useNotesQuery } from 'gql-schema'
+import { GetServerSideProps } from 'next'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 import { Button } from 'ui'
+import {
+  createPropsWithInitialApolloState,
+  initializeApollo,
+} from '../libs/apollo'
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const apolloClient = initializeApollo()
+  // Prefetch the data from the server side
+  await apolloClient.query({ query: NotesDocument })
+
+  return {
+    props: createPropsWithInitialApolloState(apolloClient),
+  }
+}
 
 export default function Index() {
+  const { loading, data } = useNotesQuery()
+  console.log(`> DEBUG:`, { loading, data })
+
   return (
     <div>
-      <main className="mx-auto max-w-5xl pt-20 text-neutral-600">
+      <main className="mx-auto max-w-5xl px-4 pt-20 text-neutral-600">
         <div className="mb-6 text-center">
           <h1 className="text-4xl font-extrabold text-neutral-700 sm:text-5xl lg:text-6xl">
             Notes
