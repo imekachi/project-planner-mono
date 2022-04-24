@@ -10,7 +10,7 @@
     "prebuild": "pnpm prisma:codegen",
     "build": "pnpm prebuild && tsc",
     "start": "node ./dist/server.js",
-    "db-ui": "prisma studio",
+    "db:ui": "prisma studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
