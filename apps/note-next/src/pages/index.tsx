@@ -1,8 +1,10 @@
 import { PlusIcon } from '@heroicons/react/outline'
-import { NotesDocument, useNotesQuery } from 'gql-schema'
+import { NotesDocument, NotesQuery, useNotesQuery } from 'gql-schema'
 import { GetServerSideProps } from 'next'
+import { useEffect, useState } from 'react'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 import { Button } from 'ui'
+import NoteList from '../components/NoteList'
 import {
   createPropsWithInitialApolloState,
   initializeApollo,
@@ -20,7 +22,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function Index() {
   const { loading, data } = useNotesQuery()
-  console.log(`> DEBUG:`, { loading, data })
+  const [activeNoteId, setActiveNoteId] = useState<
+    NotesQuery['notes'][number]['id'] | undefined
+  >(data?.notes[0]?.id)
+
+  useEffect(() => {
+    // Initialize the activeNoteId
+    // when it was loading before and the activeNoteId hasn't been initialized
+    if (!loading && !activeNoteId && data?.notes[0]?.id) {
+      setActiveNoteId(data.notes[0].id)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeNoteId, data?.notes[0]?.id, loading])
 
   return (
     <div>
@@ -43,24 +56,12 @@ export default function Index() {
                 <PlusIcon className="mx-auto h-3 w-3" />
               </button>
             </div>
-            <ul className="">
-              <li className="">
-                <a
-                  href="#"
-                  className="block cursor-pointer bg-neutral-100 py-2 px-6 font-bold"
-                >
-                  Note 1
-                </a>
-              </li>
-              <li className="">
-                <a
-                  href="#"
-                  className="block cursor-pointer py-2 px-6 hover:bg-neutral-100"
-                >
-                  Note 2
-                </a>
-              </li>
-            </ul>
+            <NoteList
+              notes={data?.notes}
+              isLoading={loading}
+              activeNoteId={activeNoteId}
+              onActiveNoteChange={setActiveNoteId}
+            />
           </div>
           <div
             id="note-content"

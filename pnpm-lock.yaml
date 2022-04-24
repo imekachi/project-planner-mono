@@ -72,6 +72,7 @@ importers:
       '@types/node': ^17.0.24
       '@types/react': 18.0.5
       '@types/react-dom': ^18.0.0
+      clsx: ^1.1.1
       config: workspace:*
       eslint: 8.13.0
       gql-schema: workspace:*
@@ -90,6 +91,7 @@ importers:
     dependencies:
       '@apollo/client': 3.5.10_graphql@15.8.0+react@18.0.0
       '@heroicons/react': 1.0.6_react@18.0.0
+      clsx: 1.1.1
       gql-schema: link:../../packages/gql-schema
       graphql: 15.8.0
       next: 12.1.5_react-dom@18.0.0+react@18.0.0
@@ -3305,6 +3307,11 @@ packages:
     resolution: {integrity: sha1-2jCcwmPfFZlMaIypAheco8fNfH4=}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /code-block-writer/11.0.0:
     resolution: {integrity: sha512-GEqWvEWWsOvER+g9keO4ohFoD3ymwyCnqY3hoTr7GZipYFwEhMHJw+TtV0rfgRhNImM6QWZGO2XYjlJVyYT62w==}

@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@heroicons/react": "^1.0.6",
+    "clsx": "^1.1.1",
     "gql-schema": "workspace:*",
     "graphql": "^15.3.0",
     "next": "12.1.5",
@@ -31,7 +32,7 @@
     "next-transpile-modules": "9.0.0",
     "postcss-config": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^4.5.3",
-    "type-utils": "workspace:*"
+    "type-utils": "workspace:*",
+    "typescript": "^4.5.3"
   }
 }
