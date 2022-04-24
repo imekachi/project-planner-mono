@@ -4,9 +4,10 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev ./src/server.ts",
+    "dev": "pnpm prisma:codegen && ts-node-dev ./src/server.ts",
+    "prisma:codegen": "prisma generate",
     "healthcheck:dev": "ts-node ./src/healthcheck.ts --input-type=module",
-    "prebuild": "prisma generate",
+    "prebuild": "pnpm prisma:codegen",
     "build": "pnpm prebuild && tsc",
     "start": "node ./dist/server.js",
     "db-ui": "prisma studio",
