@@ -1,6 +1,6 @@
-import clsx from 'clsx'
 import { NotesQuery } from 'gql-schema'
 import React from 'react'
+import { cx } from 'ui'
 
 export type NoteListItemProps = {
   note: Pick<NotesQuery['notes'][number], 'id' | 'title'>
@@ -16,9 +16,9 @@ const NoteListItem = ({
   return (
     <li>
       <button
-        className={clsx('block w-full cursor-pointer py-2 px-6 text-left', {
-          'bg-neutral-100 font-bold': isActive,
-        })}
+        className={cx('block w-full cursor-pointer py-2 px-6 text-left', [
+          isActive && 'bg-neutral-100 font-bold',
+        ])}
         onClick={() => onClick?.(note.id)}
       >
         {note.title}
