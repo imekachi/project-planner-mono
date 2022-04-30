@@ -2,7 +2,7 @@
   "name": "jest-config",
   "version": "0.0.1",
   "license": "MIT",
-  "devDependencies": {
+  "peerDependencies": {
     "@swc/core": "^1.2.171",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.4",

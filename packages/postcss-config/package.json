@@ -5,7 +5,7 @@
   "files": [
     "postcss.config.js"
   ],
-  "devDependencies": {
+  "peerDependencies": {
     "postcss": "^8.4.12",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.4.3"
