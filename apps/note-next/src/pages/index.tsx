@@ -3,7 +3,7 @@ import { NotesDocument, NotesQuery, useNotesQuery } from 'gql-schema'
 import { GetServerSideProps } from 'next'
 import { useEffect, useState } from 'react'
 import ReactTextareaAutosize from 'react-textarea-autosize'
-import { Button } from 'ui'
+import { Button } from 'ui-react'
 import NoteList from '../components/NoteList'
 import {
   createPropsWithInitialApolloState,

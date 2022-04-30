@@ -1,6 +1,6 @@
 import { NotesQuery } from 'gql-schema'
 import React from 'react'
-import { cx } from 'ui'
+import { cx } from 'ui-react'
 
 export type NoteListItemProps = {
   note: Pick<NotesQuery['notes'][number], 'id' | 'title'>

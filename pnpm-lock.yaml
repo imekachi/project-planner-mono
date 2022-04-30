@@ -97,7 +97,7 @@ importers:
       tsconfig: workspace:*
       type-utils: workspace:*
       typescript: ^4.5.3
-      ui: workspace:*
+      ui-react: workspace:*
     dependencies:
       '@apollo/client': 3.5.10_graphql@15.8.0+react@18.0.0
       '@heroicons/react': 1.0.6_react@18.0.0
@@ -107,7 +107,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-textarea-autosize: 8.3.3_@types+react@18.0.5+react@18.0.0
-      ui: link:../../packages/ui
+      ui-react: link:../../packages/ui-react
     devDependencies:
       '@tailwindcss/forms': 0.5.0_tailwindcss@3.0.24
       '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
@@ -159,7 +159,7 @@ importers:
   packages/type-utils:
     specifiers: {}
 
-  packages/ui:
+  packages/ui-react:
     specifiers: {}
 
 packages:
