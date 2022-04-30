@@ -17,7 +17,8 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-textarea-autosize": "^8.3.3",
-    "ui-react": "workspace:*"
+    "ui-react": "workspace:*",
+    "ui-utils": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.0",
