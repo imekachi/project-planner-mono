@@ -160,7 +160,16 @@ importers:
     specifiers: {}
 
   packages/ui-react:
-    specifiers: {}
+    specifiers:
+      config: workspace:*
+      jest-config: workspace:*
+      tsconfig: workspace:*
+      typescript: ^4.5.3
+    devDependencies:
+      config: link:../config
+      jest-config: link:../jest-config
+      tsconfig: link:../tsconfig
+      typescript: 4.6.3
 
 packages:
 
