@@ -2,5 +2,5 @@ const baseConfig = require('./eslint-preset')
 
 module.exports = {
   ...baseConfig,
-  extends: [...baseConfig.extends, 'next/core-web-vitals'],
+  extends: [...baseConfig.extends, 'plugin:react-hooks/recommended'],
 }
