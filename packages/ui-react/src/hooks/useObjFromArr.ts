@@ -1,6 +1,6 @@
 import { useMemo, useRef } from 'react'
 
-export default function useObjFromArr<T>(
+export function useObjFromArr<T>(
   list: T[] | undefined,
   keyResolver: (item: T) => string | number
 ) {

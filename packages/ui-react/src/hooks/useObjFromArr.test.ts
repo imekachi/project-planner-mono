@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react'
-import useObjFromArr from './useObjFromArr'
+import { useObjFromArr } from './useObjFromArr'
 
 describe('useObjFromArr', () => {
   const mockList = [
