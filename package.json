@@ -16,14 +16,14 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@swc/core": "^1.2.171",
+    "@swc/core": "^1.2.174",
     "@swc/jest": "^0.2.20",
     "@types/jest": "^27.4.1",
     "eslint": "8.13.0",
     "jest": "^27.5.1",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
-    "turbo": "^1.2.4"
+    "turbo": "^1.2.6"
   },
   "engines": {
     "npm": ">=7.0.0",

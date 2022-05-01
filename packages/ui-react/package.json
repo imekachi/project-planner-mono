@@ -4,30 +4,42 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
+  "scripts": {
+    "test": "jest ./src",
+    "tw": "pnpm test -- --watch"
+  },
   "devDependencies": {
-    "@swc/core": "^1.2.171",
+    "@swc/core": "^1.2.174",
     "@swc/jest": "^0.2.20",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
-    "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/user-event": "^14.1.1",
     "@types/jest": "^27.4.1",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "config": "workspace:*",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "jest": "^27.5.1",
     "jest-config": "workspace:*",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
+    "prettier": "^2.6.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "tsconfig": "workspace:*",
-    "typescript": "^4.5.3"
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
     "postcss-config": "workspace:*",
     "tailwindcss": "^3.0.23",
-    "typescript": "^4.5.3"
+    "typescript": "^4.6.4"
   }
 }
