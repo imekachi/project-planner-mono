@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.1",
+    "@apollo/client": "^3.5.10",
     "@heroicons/react": "^1.0.6",
     "gql-schema": "workspace:*",
     "graphql": "^15.3.0",
     "next": "12.1.5",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-textarea-autosize": "^8.3.3",
     "ui-react": "workspace:*",
     "ui-utils": "workspace:*"
