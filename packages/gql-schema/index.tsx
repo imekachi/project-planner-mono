@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -562,3 +563,128 @@ export function useNotesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Note
 export type NotesQueryHookResult = ReturnType<typeof useNotesQuery>;
 export type NotesLazyQueryHookResult = ReturnType<typeof useNotesLazyQuery>;
 export type NotesQueryResult = Apollo.QueryResult<NotesQuery, NotesQueryVariables>;
+export type AffectedRowsOutputKeySpecifier = ('count' | AffectedRowsOutputKeySpecifier)[];
+export type AffectedRowsOutputFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AggregateNoteKeySpecifier = ('_avg' | '_count' | '_max' | '_min' | '_sum' | AggregateNoteKeySpecifier)[];
+export type AggregateNoteFieldPolicy = {
+	_avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	_max?: FieldPolicy<any> | FieldReadFunction<any>,
+	_min?: FieldPolicy<any> | FieldReadFunction<any>,
+	_sum?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MutationKeySpecifier = ('createNote' | 'deleteManyNote' | 'deleteNote' | 'updateManyNote' | 'updateNote' | 'upsertNote' | MutationKeySpecifier)[];
+export type MutationFieldPolicy = {
+	createNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteManyNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateManyNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	upsertNote?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteKeySpecifier = ('body' | 'id' | 'title' | 'updatedAt' | NoteKeySpecifier)[];
+export type NoteFieldPolicy = {
+	body?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteAvgAggregateKeySpecifier = ('id' | NoteAvgAggregateKeySpecifier)[];
+export type NoteAvgAggregateFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteCountAggregateKeySpecifier = ('_all' | 'body' | 'id' | 'title' | 'updatedAt' | NoteCountAggregateKeySpecifier)[];
+export type NoteCountAggregateFieldPolicy = {
+	_all?: FieldPolicy<any> | FieldReadFunction<any>,
+	body?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteGroupByKeySpecifier = ('_avg' | '_count' | '_max' | '_min' | '_sum' | 'body' | 'id' | 'title' | 'updatedAt' | NoteGroupByKeySpecifier)[];
+export type NoteGroupByFieldPolicy = {
+	_avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	_max?: FieldPolicy<any> | FieldReadFunction<any>,
+	_min?: FieldPolicy<any> | FieldReadFunction<any>,
+	_sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	body?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteMaxAggregateKeySpecifier = ('body' | 'id' | 'title' | 'updatedAt' | NoteMaxAggregateKeySpecifier)[];
+export type NoteMaxAggregateFieldPolicy = {
+	body?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteMinAggregateKeySpecifier = ('body' | 'id' | 'title' | 'updatedAt' | NoteMinAggregateKeySpecifier)[];
+export type NoteMinAggregateFieldPolicy = {
+	body?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NoteSumAggregateKeySpecifier = ('id' | NoteSumAggregateKeySpecifier)[];
+export type NoteSumAggregateFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type QueryKeySpecifier = ('aggregateNote' | 'findFirstNote' | 'groupByNote' | 'note' | 'notes' | QueryKeySpecifier)[];
+export type QueryFieldPolicy = {
+	aggregateNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	findFirstNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	groupByNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	note?: FieldPolicy<any> | FieldReadFunction<any>,
+	notes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type StrictTypedTypePolicies = {
+	AffectedRowsOutput?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AffectedRowsOutputKeySpecifier | (() => undefined | AffectedRowsOutputKeySpecifier),
+		fields?: AffectedRowsOutputFieldPolicy,
+	},
+	AggregateNote?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AggregateNoteKeySpecifier | (() => undefined | AggregateNoteKeySpecifier),
+		fields?: AggregateNoteFieldPolicy,
+	},
+	Mutation?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MutationKeySpecifier | (() => undefined | MutationKeySpecifier),
+		fields?: MutationFieldPolicy,
+	},
+	Note?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteKeySpecifier | (() => undefined | NoteKeySpecifier),
+		fields?: NoteFieldPolicy,
+	},
+	NoteAvgAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteAvgAggregateKeySpecifier | (() => undefined | NoteAvgAggregateKeySpecifier),
+		fields?: NoteAvgAggregateFieldPolicy,
+	},
+	NoteCountAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteCountAggregateKeySpecifier | (() => undefined | NoteCountAggregateKeySpecifier),
+		fields?: NoteCountAggregateFieldPolicy,
+	},
+	NoteGroupBy?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteGroupByKeySpecifier | (() => undefined | NoteGroupByKeySpecifier),
+		fields?: NoteGroupByFieldPolicy,
+	},
+	NoteMaxAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteMaxAggregateKeySpecifier | (() => undefined | NoteMaxAggregateKeySpecifier),
+		fields?: NoteMaxAggregateFieldPolicy,
+	},
+	NoteMinAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteMinAggregateKeySpecifier | (() => undefined | NoteMinAggregateKeySpecifier),
+		fields?: NoteMinAggregateFieldPolicy,
+	},
+	NoteSumAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NoteSumAggregateKeySpecifier | (() => undefined | NoteSumAggregateKeySpecifier),
+		fields?: NoteSumAggregateFieldPolicy,
+	},
+	Query?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | QueryKeySpecifier | (() => undefined | QueryKeySpecifier),
+		fields?: QueryFieldPolicy,
+	}
+};
+export type TypedTypePolicies = StrictTypedTypePolicies & TypePolicies;
