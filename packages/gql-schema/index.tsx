@@ -474,6 +474,14 @@ export type StringWithAggregatesFilter = {
 
 export type NoteFieldsFragment = { __typename?: 'Note', id: number, title: string, body: string, updatedAt: string };
 
+export type UpdateNoteMutationVariables = Exact<{
+  id: Scalars['Int'];
+  data: NoteUpdateInput;
+}>;
+
+
+export type UpdateNoteMutation = { __typename?: 'Mutation', updateNote?: { __typename?: 'Note', id: number, title: string, body: string, updatedAt: string } | null };
+
 export type NoteByIdQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
@@ -494,6 +502,40 @@ export const NoteFieldsFragmentDoc = gql`
   updatedAt
 }
     `;
+export const UpdateNoteDocument = gql`
+    mutation UpdateNote($id: Int!, $data: NoteUpdateInput!) {
+  updateNote(data: $data, where: {id: $id}) {
+    ...NoteFields
+  }
+}
+    ${NoteFieldsFragmentDoc}`;
+export type UpdateNoteMutationFn = Apollo.MutationFunction<UpdateNoteMutation, UpdateNoteMutationVariables>;
+
+/**
+ * __useUpdateNoteMutation__
+ *
+ * To run a mutation, you first call `useUpdateNoteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateNoteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateNoteMutation, { data, loading, error }] = useUpdateNoteMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useUpdateNoteMutation(baseOptions?: Apollo.MutationHookOptions<UpdateNoteMutation, UpdateNoteMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateNoteMutation, UpdateNoteMutationVariables>(UpdateNoteDocument, options);
+      }
+export type UpdateNoteMutationHookResult = ReturnType<typeof useUpdateNoteMutation>;
+export type UpdateNoteMutationResult = Apollo.MutationResult<UpdateNoteMutation>;
+export type UpdateNoteMutationOptions = Apollo.BaseMutationOptions<UpdateNoteMutation, UpdateNoteMutationVariables>;
 export const NoteByIdDocument = gql`
     query NoteById($id: Int!) {
   note(where: {id: $id}) {

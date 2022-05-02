@@ -1,0 +1,5 @@
+mutation UpdateNote($id: Int!, $data: NoteUpdateInput!) {
+  updateNote(data: $data, where: { id: $id }) {
+    ...NoteFields
+  }
+}
