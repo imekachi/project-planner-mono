@@ -23,7 +23,7 @@ const NoteEditor = (props: NoteEditorProps): JSX.Element => {
   if (error) {
     return (
       <div>
-        <h2>Error:</h2>
+        <h2>Error: </h2>
         <pre>{JSON.stringify(error)}</pre>
       </div>
     )
@@ -52,11 +52,7 @@ const NoteEditor = (props: NoteEditorProps): JSX.Element => {
           </span>
         </div>
       </div>
-      <NoteForm
-        noteId={data.note.id}
-        title={data.note.title}
-        body={data.note.body}
-      />
+      <NoteForm note={data.note} />
     </div>
   )
 }

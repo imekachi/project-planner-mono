@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, memo } from 'react'
 
 export type NoteTitleInputProps = {
   value: string
@@ -25,4 +25,4 @@ const NoteTitleInput = (props: NoteTitleInputProps): JSX.Element => {
   )
 }
 
-export default NoteTitleInput
+export default memo(NoteTitleInput)

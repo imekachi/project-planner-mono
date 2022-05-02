@@ -4,51 +4,33 @@ import { useState } from 'react'
 import NoteBodyInput from './NoteBodyInput'
 import NoteTitleInput from './NoteTitleInput'
 
+type NoteData = Pick<Note, 'id' | 'title' | 'body'>
+
 export type NoteFormProps = {
-  noteId: Note['id'] | undefined
-  title: Note['title'] | undefined
-  body: Note['body'] | undefined
+  note: NoteData | undefined
+  // onChange: (note: NoteData) => void
 }
 
-type FormState = {
-  title: string
-  body: string
-}
+const NoteForm = ({ note }: NoteFormProps): JSX.Element => {
+  const { id, title = '', body = '' } = note ?? {}
 
-const NoteForm = (props: NoteFormProps): JSX.Element => {
-  const { noteId, title = '', body = '' } = props
-
-  // TODO: A component that wraps each input then deferred update value to onDeferredChange
-  // make it work first
-  const [formState, setFormState] = useState<FormState>({ title, body })
+  const [inputTitle, setInputTitle] = useState(title)
+  const [inputBody, setInputBody] = useState(body)
 
   // Update form state with new title and body props only when noteId changes
   useEffect(() => {
-    if (noteId) {
-      setFormState({ title, body })
+    if (id) {
+      setInputTitle(title)
+      setInputBody(body)
     }
-    // We want to run this effect only when noteId changes
+    // We want to run this effect only when note.id changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [noteId])
-
-  console.log(`> formState:`, formState)
-
-  const createOnChangeHandler = (name: string) => (newValue: string) =>
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: newValue,
-    }))
+  }, [id])
 
   return (
     <form className="mx-auto">
-      <NoteTitleInput
-        value={formState.title}
-        onChange={createOnChangeHandler('title')}
-      />
-      <NoteBodyInput
-        value={formState.body}
-        onChange={createOnChangeHandler('body')}
-      />
+      <NoteTitleInput value={inputTitle} onChange={setInputTitle} />
+      <NoteBodyInput value={inputBody} onChange={setInputBody} />
     </form>
   )
 }

@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, memo } from 'react'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 
 export type NoteBodyInputProps = {
@@ -26,4 +26,4 @@ const NoteBodyInput = (props: NoteBodyInputProps): JSX.Element => {
   )
 }
 
-export default NoteBodyInput
+export default memo(NoteBodyInput)
