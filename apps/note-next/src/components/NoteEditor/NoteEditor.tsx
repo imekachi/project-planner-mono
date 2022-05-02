@@ -1,4 +1,8 @@
-import { useNoteByIdQuery, useUpdateNoteMutation } from 'gql-schema'
+import {
+  NoteUpdateInput,
+  useNoteByIdQuery,
+  useUpdateNoteMutation,
+} from 'gql-schema'
 import { useActiveNoteId } from '../../states/ActiveNoteId'
 import NoteForm, { NoteFormProps } from './NoteForm'
 
@@ -44,24 +48,29 @@ const NoteEditor = (props: NoteEditorProps): JSX.Element => {
   console.log(`> isUpdating:`, isUpdating)
 
   const handleNoteChange: NoteFormProps['onChange'] = (newNote) => {
-    const isDirty =
-      newNote.title !== data.note?.title || newNote.body !== data.note?.body
+    const isTitleChanged = newNote.title !== data.note?.title
+    const isBodyChanged = newNote.body !== data.note?.body
+    const isDirty = isTitleChanged || isBodyChanged
+
     console.log(`> handleNoteChange:`, {
+      isTitleChanged,
+      isBodyChanged,
       isDirty,
       newNote,
       dataNote: data.note,
     })
-    // TODO: handle when there is no note id. Create a new note or probably change update to upsert?
+
     if (isDirty && newNote.id) {
-      updateNote({
-        variables: {
-          id: newNote.id,
-          data: {
-            title: { set: newNote.title },
-            body: { set: newNote.body },
-          },
-        },
-      })
+      const updateData: NoteUpdateInput = {}
+      if (isTitleChanged) {
+        updateData.title = { set: newNote.title }
+      }
+      if (isBodyChanged) {
+        updateData.body = { set: newNote.body }
+      }
+
+      // TODO: handle when there is no note id. Create a new note or probably change update to upsert?
+      updateNote({ variables: { id: newNote.id, data: updateData } })
     }
   }
 

@@ -37,7 +37,7 @@ const NoteForm = ({ note, onChange }: NoteFormProps): JSX.Element => {
     }
     // We want to run this effect only when note.id changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  }, [id, title, body])
 
   useEffect(() => {
     debouncedChange({ id, title: inputTitle, body: inputBody })
