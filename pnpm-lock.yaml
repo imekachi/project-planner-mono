@@ -108,6 +108,7 @@ importers:
       typescript: ^4.6.4
       ui-react: workspace:*
       ui-utils: workspace:*
+      use-debounce: ^8.0.0
     dependencies:
       '@apollo/client': 3.5.10_graphql@15.8.0+react@18.1.0
       '@heroicons/react': 1.0.6_react@18.1.0
@@ -119,6 +120,7 @@ importers:
       react-textarea-autosize: 8.3.3_@types+react@18.0.8+react@18.1.0
       ui-react: link:../../packages/ui-react
       ui-utils: link:../../packages/ui-utils
+      use-debounce: 8.0.0_react@18.1.0
     devDependencies:
       '@tailwindcss/forms': 0.5.0_tailwindcss@3.0.24
       '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
@@ -10178,6 +10180,15 @@ packages:
     resolution: {integrity: sha512-6+X1FLlIcjvFMAeAD/hcxDT8tmyrWnbSPMU0EnxQuDLIxokuFzWliXBiYZuGIx+mrAMLBw0WFfCkaPw8ebzAhw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
+    dependencies:
+      react: 18.1.0
+    dev: false
+
+  /use-debounce/8.0.0_react@18.1.0:
+    resolution: {integrity: sha512-rKavD/3NxRR8MnCBhcS+TiBEqLQHEFRPjm/MYKYZsRE8Z8u1einvgqRKcBTNkt4SfIXfYZNTJe3YSDBC+Vhz5g==}
+    engines: {node: '>= 10.0.0'}
+    peerDependencies:
+      react: '>=16.8.0'
     dependencies:
       react: 18.1.0
     dev: false
