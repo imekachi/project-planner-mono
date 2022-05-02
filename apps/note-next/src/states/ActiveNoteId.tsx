@@ -1,4 +1,4 @@
-import { NotesQuery } from 'gql-schema'
+import { Note } from 'gql-schema'
 import {
   createContext,
   Dispatch,
@@ -10,10 +10,8 @@ import {
 } from 'react'
 
 export type ActiveNoteIdContextValue = {
-  activeNoteId: NotesQuery['notes'][number]['id'] | undefined
-  setActiveNoteId: Dispatch<
-    SetStateAction<NotesQuery['notes'][number]['id'] | undefined>
-  >
+  activeNoteId: Note['id'] | undefined
+  setActiveNoteId: Dispatch<SetStateAction<Note['id'] | undefined>>
 }
 
 const ActiveNoteIdContext = createContext<ActiveNoteIdContextValue | undefined>(
@@ -22,7 +20,7 @@ const ActiveNoteIdContext = createContext<ActiveNoteIdContextValue | undefined>(
 
 export type ActiveNoteIdProviderProps = {
   children: ReactNode
-  initialActiveNoteId?: NotesQuery['notes'][number]['id']
+  initialActiveNoteId?: Note['id']
 }
 
 export function ActiveNoteIdProvider(
@@ -30,9 +28,9 @@ export function ActiveNoteIdProvider(
 ): JSX.Element {
   const { children, initialActiveNoteId } = props
 
-  const [activeNoteId, setActiveNoteId] = useState<
-    NotesQuery['notes'][number]['id'] | undefined
-  >(initialActiveNoteId)
+  const [activeNoteId, setActiveNoteId] = useState<Note['id'] | undefined>(
+    initialActiveNoteId
+  )
 
   const context = useMemo(
     () => ({ activeNoteId, setActiveNoteId }),

@@ -1,11 +1,11 @@
-import { NotesQuery } from 'gql-schema'
+import { Note } from 'gql-schema'
 import React from 'react'
 import { cx } from 'ui-utils'
 
 export type NoteListItemProps = {
-  note: Pick<NotesQuery['notes'][number], 'id' | 'title'>
+  note: Pick<Note, 'id' | 'title'>
   isActive?: boolean
-  onClick?: (noteId: NotesQuery['notes'][number]['id']) => void
+  onClick?: (noteId: Note['id']) => void
 }
 
 const NoteListItem = ({

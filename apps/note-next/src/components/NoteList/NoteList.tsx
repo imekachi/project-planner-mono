@@ -1,14 +1,12 @@
-import { NotesQuery } from 'gql-schema'
+import { Note } from 'gql-schema'
 import React from 'react'
 import NoteListItem from '../NoteListItem'
 
 export type NoteListProps = {
-  notes: Pick<NotesQuery['notes'][number], 'id' | 'title'>[] | undefined
-  activeNoteId?: NotesQuery['notes'][number]['id']
+  notes: Pick<Note, 'id' | 'title'>[] | undefined
+  activeNoteId?: Note['id']
   isLoading?: boolean
-  onActiveNoteChange?: (
-    newActiveNoteId: NotesQuery['notes'][number]['id']
-  ) => void
+  onActiveNoteChange?: (newActiveNoteId: Note['id']) => void
 }
 
 const NoteList = ({

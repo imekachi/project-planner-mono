@@ -1,12 +1,12 @@
-import { NotesQuery } from 'gql-schema'
+import { Note } from 'gql-schema'
 import { ChangeEvent, useEffect } from 'react'
 import { useState } from 'react'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 
 export type NoteFormProps = {
-  noteId: NotesQuery['notes'][number]['id'] | undefined
-  title: string | undefined
-  body: string | undefined
+  noteId: Note['id'] | undefined
+  title: Note['title'] | undefined
+  body: Note['body'] | undefined
 }
 
 type FormState = {
