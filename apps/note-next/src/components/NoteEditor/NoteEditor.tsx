@@ -1,6 +1,6 @@
 import { useNoteByIdQuery } from 'gql-schema'
 import { useActiveNoteId } from '../../states/ActiveNoteId'
-import NoteForm from '../NoteForm'
+import NoteForm from './NoteForm'
 
 export type NoteEditorProps = {
   //

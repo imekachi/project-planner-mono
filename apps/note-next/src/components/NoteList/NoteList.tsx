@@ -1,6 +1,6 @@
 import { Note } from 'gql-schema'
 import React from 'react'
-import NoteListItem from '../NoteListItem'
+import NoteListItem from './NoteListItem'
 
 export type NoteListProps = {
   notes: Pick<Note, 'id' | 'title'>[] | undefined

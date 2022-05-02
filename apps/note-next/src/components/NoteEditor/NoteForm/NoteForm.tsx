@@ -1,7 +1,8 @@
 import { Note } from 'gql-schema'
-import { ChangeEvent, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
-import ReactTextareaAutosize from 'react-textarea-autosize'
+import NoteBodyInput from './NoteBodyInput'
+import NoteTitleInput from './NoteTitleInput'
 
 export type NoteFormProps = {
   noteId: Note['id'] | undefined
@@ -32,31 +33,19 @@ const NoteForm = (props: NoteFormProps): JSX.Element => {
 
   console.log(`> formState:`, formState)
 
-  const createOnChangeHandler =
-    (name: string) =>
-    <T extends HTMLInputElement | HTMLTextAreaElement>(event: ChangeEvent<T>) =>
-      setFormState((prevState) => ({
-        ...prevState,
-        [name]: event.target.value,
-      }))
+  const createOnChangeHandler = (name: string) => (newValue: string) =>
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: newValue,
+    }))
 
   return (
     <form className="mx-auto">
-      <input
-        type="text"
-        id="note-title"
-        className="mb-4 w-full text-lg font-bold focus-visible:outline-0"
-        placeholder="Title"
-        name="title"
+      <NoteTitleInput
         value={formState.title}
         onChange={createOnChangeHandler('title')}
       />
-      <ReactTextareaAutosize
-        id="note-body"
-        className="w-full"
-        minRows={6}
-        placeholder="Type your note here..."
-        name="body"
+      <NoteBodyInput
         value={formState.body}
         onChange={createOnChangeHandler('body')}
       />
