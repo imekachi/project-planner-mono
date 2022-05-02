@@ -6,6 +6,7 @@ import {
 import { useMemo } from 'react'
 import { UnknownObject } from 'type-utils'
 import { isOnBrowser } from '../utils/env'
+import { typePolicies } from './typePolicies'
 
 export type ApolloCacheState = NormalizedCacheObject
 export type ApolloClientInstance = ApolloClient<ApolloCacheState>
@@ -71,6 +72,8 @@ function createApolloClient(): ApolloClientInstance {
   return new ApolloClient({
     ssrMode: !isOnBrowser(),
     uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies,
+    }),
   })
 }
