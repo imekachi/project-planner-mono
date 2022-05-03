@@ -77,6 +77,8 @@ importers:
       '@heroicons/react': ^1.0.6
       '@tailwindcss/forms': ^0.5.0
       '@tailwindcss/typography': ^0.5.2
+      '@testing-library/jest-dom': ^5.16.4
+      '@testing-library/react': ^13.1.1
       '@types/node': ^17.0.30
       '@types/react': ^18.0.8
       '@types/react-dom': ^18.0.3
@@ -92,6 +94,7 @@ importers:
       eslint-plugin-unused-imports: ^2.0.0
       gql-schema: workspace:*
       graphql: ^15.3.0
+      jest: ^27.5.1
       jotai: ^1.6.5
       next: 12.1.5
       next-transpile-modules: 9.0.0
@@ -126,6 +129,8 @@ importers:
     devDependencies:
       '@tailwindcss/forms': 0.5.0_tailwindcss@3.0.24
       '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
+      '@testing-library/jest-dom': 5.16.4
+      '@testing-library/react': 13.1.1_react-dom@18.1.0+react@18.1.0
       '@types/node': 17.0.30
       '@types/react': 18.0.8
       '@types/react-dom': 18.0.3
@@ -139,6 +144,7 @@ importers:
       eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-react: 7.29.4_eslint@8.14.0
       eslint-plugin-unused-imports: 2.0.0_b8847eb0ef3f4354e97e2f7d0b3a686a
+      jest: 27.5.1
       next-transpile-modules: 9.0.0
       postcss: 8.4.13
       postcss-config: link:../../packages/postcss-config

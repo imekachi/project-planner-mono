@@ -20,6 +20,7 @@ const NoteListItem = ({
           isActive && 'bg-neutral-100 font-bold',
         ])}
         onClick={() => onClick?.(note.id)}
+        data-testid="NoteListItem"
       >
         {note.title}
       </button>
