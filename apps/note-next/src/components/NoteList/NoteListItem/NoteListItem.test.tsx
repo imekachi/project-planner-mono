@@ -21,4 +21,11 @@ describe('NoteListItem', () => {
 
     expect(onClick).toHaveBeenCalledWith(mockNote.id)
   })
+
+  it('should not throw when onClick is not provided', () => {
+    render(<NoteListItem note={mockNote} />)
+
+    const noteListItem = screen.getByTestId('NoteListItem')
+    expect(() => noteListItem.click()).not.toThrow()
+  })
 })
