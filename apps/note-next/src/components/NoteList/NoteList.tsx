@@ -16,15 +16,23 @@ const NoteList = ({
   onActiveNoteChange,
 }: NoteListProps): JSX.Element => {
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div data-testid="NoteList.Loading">Loading...</div>
   }
 
+  // TODO: render a mock list item with title Untitled
   if (!notes?.length) {
-    return <div>Create a new note by clicking + icon</div>
+    return (
+      <p
+        data-testid="NoteList.EmptyState"
+        className="grid min-h-[14rem] place-content-center p-6 text-center text-sm text-neutral-400"
+      >
+        No notes yet.
+      </p>
+    )
   }
 
   return (
-    <ul className="">
+    <ul>
       {notes.map((note) => (
         <NoteListItem
           key={note.id}
