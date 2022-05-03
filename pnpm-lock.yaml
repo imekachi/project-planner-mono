@@ -92,6 +92,7 @@ importers:
       eslint-plugin-unused-imports: ^2.0.0
       gql-schema: workspace:*
       graphql: ^15.3.0
+      jotai: ^1.6.5
       next: 12.1.5
       next-transpile-modules: 9.0.0
       postcss: ^8.4.13
@@ -114,6 +115,7 @@ importers:
       '@heroicons/react': 1.0.6_react@18.1.0
       gql-schema: link:../../packages/gql-schema
       graphql: 15.8.0
+      jotai: 1.6.5_react@18.1.0
       next: 12.1.5_react-dom@18.1.0+react@18.1.0
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
@@ -7079,6 +7081,43 @@ packages:
       - ts-node
       - utf-8-validate
     dev: true
+
+  /jotai/1.6.5_react@18.1.0:
+    resolution: {integrity: sha512-B+DGV5ALIkIeyA1Bi9yBpdGmcWkmDS/p8C1XFYx9jFBs+lkeOdu0WAozAPCG4Qq1EcQ68vF+07HmPYFN5kf9OQ==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      '@babel/template': '*'
+      '@urql/core': '*'
+      immer: '*'
+      optics-ts: '*'
+      react: '>=16.8'
+      react-query: '*'
+      valtio: '*'
+      wonka: '*'
+      xstate: '*'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      '@urql/core':
+        optional: true
+      immer:
+        optional: true
+      optics-ts:
+        optional: true
+      react-query:
+        optional: true
+      valtio:
+        optional: true
+      wonka:
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      react: 18.1.0
+    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}

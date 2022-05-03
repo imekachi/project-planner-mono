@@ -7,7 +7,6 @@ import {
   createPropsWithInitialApolloState,
   initializeApollo,
 } from '../libs/apollo'
-import { ActiveNoteIdProvider } from '../states/ActiveNoteId'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo()
@@ -29,10 +28,8 @@ export default function Index() {
           </h1>
         </div>
         <section className="grid grid-cols-4 divide-x overflow-hidden rounded-lg border border-neutral-300">
-          <ActiveNoteIdProvider>
-            <Sidebar />
-            <NoteEditor />
-          </ActiveNoteIdProvider>
+          <Sidebar />
+          <NoteEditor />
         </section>
       </main>
       <div className="hidden">

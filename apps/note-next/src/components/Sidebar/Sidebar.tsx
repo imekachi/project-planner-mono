@@ -1,17 +1,13 @@
 import { PlusIcon } from '@heroicons/react/outline'
 import { useNotesQuery } from 'gql-schema'
+import { useAtom } from 'jotai'
 import { useEffect } from 'react'
-import { useActiveNoteId } from '../../states/ActiveNoteId'
+import { activeNoteIdAtom } from '../../states/noteEditor'
 import NoteList from '../NoteList'
 
-export type SidebarProps = {
-  //
-}
-
-const Sidebar = (props: SidebarProps): JSX.Element => {
-  const {} = props
+const Sidebar = (): JSX.Element => {
   const { loading, data } = useNotesQuery()
-  const { activeNoteId, setActiveNoteId } = useActiveNoteId()
+  const [activeNoteId, setActiveNoteId] = useAtom(activeNoteIdAtom)
 
   useEffect(() => {
     // Initialize the activeNoteId

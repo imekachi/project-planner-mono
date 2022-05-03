@@ -1,9 +1,6 @@
 import { Note } from 'gql-schema'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Optional } from 'type-utils'
-import { useDebouncedCallback } from 'use-debounce'
-import { NOTE_EDITOR } from '../../../config/noteEditor'
 import NoteBodyInput from './NoteBodyInput'
 import NoteTitleInput from './NoteTitleInput'
 
@@ -20,11 +17,6 @@ const NoteForm = ({ note, onChange }: NoteFormProps): JSX.Element => {
   const [inputTitle, setInputTitle] = useState(title)
   const [inputBody, setInputBody] = useState(body)
 
-  const debouncedChange = useDebouncedCallback(
-    onChange,
-    NOTE_EDITOR.DEFERRED_SAVE_MS
-  )
-
   // Update form state with new title and body props only when noteId changes
   useEffect(() => {
     if (id) {
@@ -40,12 +32,8 @@ const NoteForm = ({ note, onChange }: NoteFormProps): JSX.Element => {
   }, [id, title, body])
 
   useEffect(() => {
-    debouncedChange({ id, title: inputTitle, body: inputBody })
-
-    return () => {
-      debouncedChange.cancel()
-    }
-  }, [debouncedChange, id, inputBody, inputTitle])
+    onChange({ id, title: inputTitle, body: inputBody })
+  }, [id, inputBody, inputTitle, onChange])
 
   return (
     <form className="mx-auto">

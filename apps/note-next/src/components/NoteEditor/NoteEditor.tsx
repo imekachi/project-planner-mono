@@ -3,25 +3,62 @@ import {
   useNoteByIdQuery,
   useUpdateNoteMutation,
 } from 'gql-schema'
-import { useActiveNoteId } from '../../states/ActiveNoteId'
+import { useAtomValue } from 'jotai'
+import { useDebouncedCallback } from 'use-debounce'
+import { NOTE_EDITOR } from '../../config/noteEditor'
+import { activeNoteIdAtom } from '../../states/noteEditor'
 import NoteForm, { NoteFormProps } from './NoteForm'
 
-export type NoteEditorProps = {
-  //
-}
+const NoteEditor = (): JSX.Element => {
+  // Get activeNoteId from the atom (a context)
+  const activeNoteId = useAtomValue(activeNoteIdAtom)
 
-const NoteEditor = (props: NoteEditorProps): JSX.Element => {
-  const {} = props
-  const { activeNoteId } = useActiveNoteId()
-  // TODO: have apollo client to read cache from note list first
-  const { loading, data, error } = useNoteByIdQuery({
+  // Query the note data based on the activeNoteId.
+  // Note: This will try to get data from the cache first,
+  // it should hit the cache from the notesQuery.
+  const {
+    loading,
+    data: noteQuery,
+    error,
+  } = useNoteByIdQuery({
     skip: !activeNoteId,
     variables: { id: activeNoteId as number },
   })
 
-  console.log(`> useNoteByIdQuery:`, { loading, data, error })
+  console.log(`> useNoteByIdQuery:`, { loading, noteQuery, error })
 
-  const [updateNote, { loading: isUpdating }] = useUpdateNoteMutation()
+  const [updateNoteMutation] = useUpdateNoteMutation()
+
+  const debouncedUpdateNote = useDebouncedCallback<NoteFormProps['onChange']>(
+    (newNote) => {
+      const isTitleChanged = newNote.title !== noteQuery?.note?.title
+      const isBodyChanged = newNote.body !== noteQuery?.note?.body
+      const isDirty = isTitleChanged || isBodyChanged
+
+      console.log(`> handleNoteChange:`, {
+        isTitleChanged,
+        isBodyChanged,
+        isDirty,
+        newNote,
+        dataNote: noteQuery?.note,
+      })
+
+      if (isDirty && newNote.id) {
+        const updateData: NoteUpdateInput = {}
+
+        if (isTitleChanged) {
+          updateData.title = { set: newNote.title }
+        }
+        if (isBodyChanged) {
+          updateData.body = { set: newNote.body }
+        }
+
+        // TODO: handle when there is no note id. Create a new note or probably change update to upsert?
+        updateNoteMutation({ variables: { id: newNote.id, data: updateData } })
+      }
+    },
+    NOTE_EDITOR.DEFERRED_SAVE_MS
+  )
 
   if (loading) {
     return <div>loading...</div>
@@ -37,41 +74,12 @@ const NoteEditor = (props: NoteEditorProps): JSX.Element => {
   if (!activeNoteId) {
     return <div>Select some note from the side bar</div>
   }
-  if (!data?.note) {
+  if (!noteQuery?.note) {
     return (
       <div>
         Note not found: <pre>id: {activeNoteId}</pre>
       </div>
     )
-  }
-
-  console.log(`> isUpdating:`, isUpdating)
-
-  const handleNoteChange: NoteFormProps['onChange'] = (newNote) => {
-    const isTitleChanged = newNote.title !== data.note?.title
-    const isBodyChanged = newNote.body !== data.note?.body
-    const isDirty = isTitleChanged || isBodyChanged
-
-    console.log(`> handleNoteChange:`, {
-      isTitleChanged,
-      isBodyChanged,
-      isDirty,
-      newNote,
-      dataNote: data.note,
-    })
-
-    if (isDirty && newNote.id) {
-      const updateData: NoteUpdateInput = {}
-      if (isTitleChanged) {
-        updateData.title = { set: newNote.title }
-      }
-      if (isBodyChanged) {
-        updateData.body = { set: newNote.body }
-      }
-
-      // TODO: handle when there is no note id. Create a new note or probably change update to upsert?
-      updateNote({ variables: { id: newNote.id, data: updateData } })
-    }
   }
 
   return (
@@ -87,7 +95,7 @@ const NoteEditor = (props: NoteEditorProps): JSX.Element => {
           </span>
         </div>
       </div>
-      <NoteForm note={data.note} onChange={handleNoteChange} />
+      <NoteForm note={noteQuery.note} onChange={debouncedUpdateNote} />
     </div>
   )
 }
