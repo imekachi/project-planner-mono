@@ -1,1 +1,1 @@
-module.exports = require('jest-config/jest-ui.config')
+module.exports = require('jest-config/jest-dom.config')
