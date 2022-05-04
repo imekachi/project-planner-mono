@@ -1,4 +1,4 @@
-import { ChangeEvent, memo } from 'react'
+import { ChangeEvent } from 'react'
 
 export type NoteTitleInputProps = {
   value: string
@@ -14,15 +14,16 @@ const NoteTitleInput = (props: NoteTitleInputProps): JSX.Element => {
 
   return (
     <input
-      type="text"
-      id="note-title"
       className="mb-4 w-full text-lg font-bold focus-visible:outline-0"
-      placeholder="Title"
       name="title"
+      type="text"
+      placeholder="Title"
       value={value}
       onChange={handleChange}
+      id="NoteTitleInput"
+      data-testid="NoteTitleInput"
     />
   )
 }
 
-export default memo(NoteTitleInput)
+export default NoteTitleInput
