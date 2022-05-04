@@ -3,3 +3,9 @@ mutation UpdateNote($id: String!, $data: NoteUpdateInput!) {
     ...NoteFields
   }
 }
+
+mutation CreateNote($data: NoteCreateInput!) {
+  createNote(data: $data) {
+    ...NoteFields
+  }
+}
