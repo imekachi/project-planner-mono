@@ -1,6 +1,5 @@
 import { NotesDocument } from 'gql-schema'
 import { GetServerSideProps } from 'next'
-import { Button } from 'ui-react'
 import NoteEditor from '../components/NoteEditor'
 import Sidebar from '../components/Sidebar'
 import {
@@ -32,9 +31,6 @@ export default function Index() {
           <NoteEditor />
         </section>
       </main>
-      <div className="hidden">
-        <Button />
-      </div>
     </div>
   )
 }
