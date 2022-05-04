@@ -15,7 +15,7 @@ module.exports = {
     'react/jsx-key': 'off',
     'no-param-reassign': 'error',
     'no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
       'warn',
       {
@@ -43,10 +43,7 @@ module.exports = {
       },
     ],
     'import/newline-after-import': 'warn',
-    'sort-imports': [
-      'error',
-      { ignoreCase: true, ignoreDeclarationSort: true },
-    ],
+    'sort-imports': ['warn', { ignoreCase: true, ignoreDeclarationSort: true }],
   },
   overrides: [
     {
