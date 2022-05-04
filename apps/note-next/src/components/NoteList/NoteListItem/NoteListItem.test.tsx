@@ -12,6 +12,15 @@ describe('NoteListItem', () => {
     expect(screen.getByText(mockNote.title)).toBeInTheDocument()
   })
 
+  it('renders a default note title when the title is an empty string', () => {
+    const mockNoteWithEmptyTitle: NoteListItemProps['note'] = {
+      ...mockNote,
+      title: '',
+    }
+    render(<NoteListItem note={mockNoteWithEmptyTitle} />)
+    expect(screen.getByText('Untitled')).toBeInTheDocument()
+  })
+
   it('calls onClick when the item is clicked', () => {
     const onClick = jest.fn()
     render(<NoteListItem note={mockNote} onClick={onClick} />)

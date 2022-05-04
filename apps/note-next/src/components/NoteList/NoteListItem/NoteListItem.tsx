@@ -22,7 +22,7 @@ const NoteListItem = ({
         onClick={() => onClick?.(note.id)}
         data-testid="NoteListItem"
       >
-        {note.title}
+        {note.title === '' ? 'Untitled' : note.title}
       </button>
     </li>
   )
