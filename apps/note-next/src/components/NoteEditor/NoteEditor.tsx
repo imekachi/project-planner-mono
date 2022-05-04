@@ -1,14 +1,16 @@
 import { NoteUpdateInput, useNoteByIdQuery } from 'gql-schema'
-import { useAtomValue } from 'jotai'
+import { useAtom } from 'jotai'
 import { useDebouncedCallback } from 'use-debounce'
 import { NOTE_EDITOR } from '../../config/noteEditor'
+import { checkIsPlaceholderNote } from '../../domain/createNote'
+import { useCreateNoteMutationWithCacheSync } from '../../hooks/graphql/useCreateNoteMutationWithCacheSync'
 import { useUpdateNoteMutationWithCacheSync } from '../../hooks/graphql/useUpdateNoteMutationWithCacheSync'
 import { activeNoteIdAtom } from '../../states/noteEditor'
 import NoteForm, { NoteFormProps } from './NoteForm'
 
 const NoteEditor = (): JSX.Element => {
   // Get activeNoteId from the atom (a context)
-  const activeNoteId = useAtomValue(activeNoteIdAtom)
+  const [activeNoteId, setActiveNoteId] = useAtom(activeNoteIdAtom)
 
   // Query the note data based on the activeNoteId.
   // Note: This will try to get data from the cache first,
@@ -24,34 +26,41 @@ const NoteEditor = (): JSX.Element => {
 
   console.log(`> useNoteByIdQuery:`, { loading, noteQuery, error })
 
+  // TODO: extract these into a custom hook
   const [updateNoteMutation] = useUpdateNoteMutationWithCacheSync()
-
+  const [createNoteMutation] = useCreateNoteMutationWithCacheSync()
   const debouncedUpdateNote = useDebouncedCallback<NoteFormProps['onChange']>(
-    (newNote) => {
-      const isTitleChanged = newNote.title !== noteQuery?.note?.title
-      const isBodyChanged = newNote.body !== noteQuery?.note?.body
+    async (updatedNote) => {
+      const isTitleChanged = updatedNote.title !== noteQuery?.note?.title
+      const isBodyChanged = updatedNote.body !== noteQuery?.note?.body
       const isDirty = isTitleChanged || isBodyChanged
 
       console.log(`> handleNoteChange:`, {
         isTitleChanged,
         isBodyChanged,
         isDirty,
-        newNote,
+        updatedNote,
         dataNote: noteQuery?.note,
       })
 
-      if (isDirty && newNote.id) {
-        const updateData: NoteUpdateInput = {}
+      // If nothing changed, do nothing
+      if (!isDirty) return undefined
 
-        if (isTitleChanged) {
-          updateData.title = { set: newNote.title }
+      // If it's a placeholder note, create a new note instead
+      if (checkIsPlaceholderNote(updatedNote.id)) {
+        const newNote = await createNoteMutation(updatedNote)
+        if (newNote) {
+          setActiveNoteId(newNote.id)
         }
-        if (isBodyChanged) {
-          updateData.body = { set: newNote.body }
+      } else {
+        const updateData: NoteUpdateInput = {
+          ...(isTitleChanged && { title: { set: updatedNote.title } }),
+          ...(isBodyChanged && { body: { set: updatedNote.body } }),
         }
 
-        // TODO: handle when there is no note id. Create a new note or probably change update to upsert?
-        updateNoteMutation({ variables: { id: newNote.id, data: updateData } })
+        updateNoteMutation({
+          variables: { id: updatedNote.id, data: updateData },
+        })
       }
     },
     NOTE_EDITOR.DEFERRED_SAVE_MS

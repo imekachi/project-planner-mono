@@ -1,0 +1,1 @@
+export const NOTE_PLACEHOLDER_ID_PREFIX = 'TEMP_NOTE_'

@@ -1,18 +1,17 @@
 import { Note } from 'gql-schema'
 import { useEffect, useState } from 'react'
-import { Optional } from 'type-utils'
 import NoteBodyInput from './NoteBodyInput'
 import NoteTitleInput from './NoteTitleInput'
 
 type NoteData = Pick<Note, 'id' | 'title' | 'body'>
 
 export type NoteFormProps = {
-  note: NoteData | undefined
-  onChange: (note: Optional<NoteData, 'id'>) => void
+  note: NoteData
+  onChange: (updatedNote: NoteData) => void
 }
 
 const NoteForm = ({ note, onChange }: NoteFormProps): JSX.Element => {
-  const { id, title = '', body = '' } = note ?? {}
+  const { id, title, body } = note
 
   const [inputTitle, setInputTitle] = useState(title)
   const [inputBody, setInputBody] = useState(body)
