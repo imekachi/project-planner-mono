@@ -25,11 +25,9 @@ export type AffectedRowsOutput = {
 
 export type AggregateNote = {
   __typename?: 'AggregateNote';
-  _avg?: Maybe<NoteAvgAggregate>;
   _count?: Maybe<NoteCountAggregate>;
   _max?: Maybe<NoteMaxAggregate>;
   _min?: Maybe<NoteMinAggregate>;
-  _sum?: Maybe<NoteSumAggregate>;
 };
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -59,33 +57,6 @@ export type DateTimeWithAggregatesFilter = {
   lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
-};
-
-export type IntFilter = {
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-};
-
-export type IntWithAggregatesFilter = {
-  _avg?: InputMaybe<NestedFloatFilter>;
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedIntFilter>;
-  _min?: InputMaybe<NestedIntFilter>;
-  _sum?: InputMaybe<NestedIntFilter>;
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 export type Mutation = {
@@ -157,17 +128,6 @@ export type NestedDateTimeWithAggregatesFilter = {
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
 };
 
-export type NestedFloatFilter = {
-  equals?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  not?: InputMaybe<NestedFloatFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']>>;
-};
-
 export type NestedIntFilter = {
   equals?: InputMaybe<Scalars['Int']>;
   gt?: InputMaybe<Scalars['Int']>;
@@ -176,22 +136,6 @@ export type NestedIntFilter = {
   lt?: InputMaybe<Scalars['Int']>;
   lte?: InputMaybe<Scalars['Int']>;
   not?: InputMaybe<NestedIntFilter>;
-  notIn?: InputMaybe<Array<Scalars['Int']>>;
-};
-
-export type NestedIntWithAggregatesFilter = {
-  _avg?: InputMaybe<NestedFloatFilter>;
-  _count?: InputMaybe<NestedIntFilter>;
-  _max?: InputMaybe<NestedIntFilter>;
-  _min?: InputMaybe<NestedIntFilter>;
-  _sum?: InputMaybe<NestedIntFilter>;
-  equals?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  not?: InputMaybe<NestedIntWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars['Int']>>;
 };
 
@@ -229,18 +173,9 @@ export type NestedStringWithAggregatesFilter = {
 export type Note = {
   __typename?: 'Note';
   body: Scalars['String'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
-};
-
-export type NoteAvgAggregate = {
-  __typename?: 'NoteAvgAggregate';
-  id?: Maybe<Scalars['Float']>;
-};
-
-export type NoteAvgOrderByAggregateInput = {
-  id?: InputMaybe<SortOrder>;
 };
 
 export type NoteCountAggregate = {
@@ -261,19 +196,18 @@ export type NoteCountOrderByAggregateInput = {
 
 export type NoteCreateInput = {
   body: Scalars['String'];
+  id?: InputMaybe<Scalars['String']>;
   title: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type NoteGroupBy = {
   __typename?: 'NoteGroupBy';
-  _avg?: Maybe<NoteAvgAggregate>;
   _count?: Maybe<NoteCountAggregate>;
   _max?: Maybe<NoteMaxAggregate>;
   _min?: Maybe<NoteMinAggregate>;
-  _sum?: Maybe<NoteSumAggregate>;
   body: Scalars['String'];
-  id: Scalars['Int'];
+  id: Scalars['String'];
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
 };
@@ -281,7 +215,7 @@ export type NoteGroupBy = {
 export type NoteMaxAggregate = {
   __typename?: 'NoteMaxAggregate';
   body?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -296,7 +230,7 @@ export type NoteMaxOrderByAggregateInput = {
 export type NoteMinAggregate = {
   __typename?: 'NoteMinAggregate';
   body?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -309,11 +243,9 @@ export type NoteMinOrderByAggregateInput = {
 };
 
 export type NoteOrderByWithAggregationInput = {
-  _avg?: InputMaybe<NoteAvgOrderByAggregateInput>;
   _count?: InputMaybe<NoteCountOrderByAggregateInput>;
   _max?: InputMaybe<NoteMaxOrderByAggregateInput>;
   _min?: InputMaybe<NoteMinOrderByAggregateInput>;
-  _sum?: InputMaybe<NoteSumOrderByAggregateInput>;
   body?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   title?: InputMaybe<SortOrder>;
@@ -339,28 +271,21 @@ export type NoteScalarWhereWithAggregatesInput = {
   NOT?: InputMaybe<Array<NoteScalarWhereWithAggregatesInput>>;
   OR?: InputMaybe<Array<NoteScalarWhereWithAggregatesInput>>;
   body?: InputMaybe<StringWithAggregatesFilter>;
-  id?: InputMaybe<IntWithAggregatesFilter>;
+  id?: InputMaybe<StringWithAggregatesFilter>;
   title?: InputMaybe<StringWithAggregatesFilter>;
   updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
 };
 
-export type NoteSumAggregate = {
-  __typename?: 'NoteSumAggregate';
-  id?: Maybe<Scalars['Int']>;
-};
-
-export type NoteSumOrderByAggregateInput = {
-  id?: InputMaybe<SortOrder>;
-};
-
 export type NoteUpdateInput = {
   body?: InputMaybe<StringFieldUpdateOperationsInput>;
+  id?: InputMaybe<StringFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type NoteUpdateManyMutationInput = {
   body?: InputMaybe<StringFieldUpdateOperationsInput>;
+  id?: InputMaybe<StringFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -370,13 +295,13 @@ export type NoteWhereInput = {
   NOT?: InputMaybe<Array<NoteWhereInput>>;
   OR?: InputMaybe<Array<NoteWhereInput>>;
   body?: InputMaybe<StringFilter>;
-  id?: InputMaybe<IntFilter>;
+  id?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type NoteWhereUniqueInput = {
-  id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -472,27 +397,27 @@ export type StringWithAggregatesFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
-export type NoteFieldsFragment = { __typename?: 'Note', id: number, title: string, body: string, updatedAt: string };
+export type NoteFieldsFragment = { __typename?: 'Note', id: string, title: string, body: string, updatedAt: string };
 
 export type UpdateNoteMutationVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['String'];
   data: NoteUpdateInput;
 }>;
 
 
-export type UpdateNoteMutation = { __typename?: 'Mutation', updateNote?: { __typename?: 'Note', id: number, title: string, body: string, updatedAt: string } | null };
+export type UpdateNoteMutation = { __typename?: 'Mutation', updateNote?: { __typename?: 'Note', id: string, title: string, body: string, updatedAt: string } | null };
 
 export type NoteByIdQueryVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['String'];
 }>;
 
 
-export type NoteByIdQuery = { __typename?: 'Query', note?: { __typename?: 'Note', id: number, title: string, body: string, updatedAt: string } | null };
+export type NoteByIdQuery = { __typename?: 'Query', note?: { __typename?: 'Note', id: string, title: string, body: string, updatedAt: string } | null };
 
 export type NotesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type NotesQuery = { __typename?: 'Query', notes: Array<{ __typename?: 'Note', id: number, title: string, body: string, updatedAt: string }> };
+export type NotesQuery = { __typename?: 'Query', notes: Array<{ __typename?: 'Note', id: string, title: string, body: string, updatedAt: string }> };
 
 export const NoteFieldsFragmentDoc = gql`
     fragment NoteFields on Note {
@@ -503,7 +428,7 @@ export const NoteFieldsFragmentDoc = gql`
 }
     `;
 export const UpdateNoteDocument = gql`
-    mutation UpdateNote($id: Int!, $data: NoteUpdateInput!) {
+    mutation UpdateNote($id: String!, $data: NoteUpdateInput!) {
   updateNote(data: $data, where: {id: $id}) {
     ...NoteFields
   }
@@ -537,7 +462,7 @@ export type UpdateNoteMutationHookResult = ReturnType<typeof useUpdateNoteMutati
 export type UpdateNoteMutationResult = Apollo.MutationResult<UpdateNoteMutation>;
 export type UpdateNoteMutationOptions = Apollo.BaseMutationOptions<UpdateNoteMutation, UpdateNoteMutationVariables>;
 export const NoteByIdDocument = gql`
-    query NoteById($id: Int!) {
+    query NoteById($id: String!) {
   note(where: {id: $id}) {
     ...NoteFields
   }
@@ -609,13 +534,11 @@ export type AffectedRowsOutputKeySpecifier = ('count' | AffectedRowsOutputKeySpe
 export type AffectedRowsOutputFieldPolicy = {
 	count?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type AggregateNoteKeySpecifier = ('_avg' | '_count' | '_max' | '_min' | '_sum' | AggregateNoteKeySpecifier)[];
+export type AggregateNoteKeySpecifier = ('_count' | '_max' | '_min' | AggregateNoteKeySpecifier)[];
 export type AggregateNoteFieldPolicy = {
-	_avg?: FieldPolicy<any> | FieldReadFunction<any>,
 	_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	_max?: FieldPolicy<any> | FieldReadFunction<any>,
-	_min?: FieldPolicy<any> | FieldReadFunction<any>,
-	_sum?: FieldPolicy<any> | FieldReadFunction<any>
+	_min?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type MutationKeySpecifier = ('createNote' | 'deleteManyNote' | 'deleteNote' | 'updateManyNote' | 'updateNote' | 'upsertNote' | MutationKeySpecifier)[];
 export type MutationFieldPolicy = {
@@ -633,10 +556,6 @@ export type NoteFieldPolicy = {
 	title?: FieldPolicy<any> | FieldReadFunction<any>,
 	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type NoteAvgAggregateKeySpecifier = ('id' | NoteAvgAggregateKeySpecifier)[];
-export type NoteAvgAggregateFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>
-};
 export type NoteCountAggregateKeySpecifier = ('_all' | 'body' | 'id' | 'title' | 'updatedAt' | NoteCountAggregateKeySpecifier)[];
 export type NoteCountAggregateFieldPolicy = {
 	_all?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -645,13 +564,11 @@ export type NoteCountAggregateFieldPolicy = {
 	title?: FieldPolicy<any> | FieldReadFunction<any>,
 	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type NoteGroupByKeySpecifier = ('_avg' | '_count' | '_max' | '_min' | '_sum' | 'body' | 'id' | 'title' | 'updatedAt' | NoteGroupByKeySpecifier)[];
+export type NoteGroupByKeySpecifier = ('_count' | '_max' | '_min' | 'body' | 'id' | 'title' | 'updatedAt' | NoteGroupByKeySpecifier)[];
 export type NoteGroupByFieldPolicy = {
-	_avg?: FieldPolicy<any> | FieldReadFunction<any>,
 	_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	_max?: FieldPolicy<any> | FieldReadFunction<any>,
 	_min?: FieldPolicy<any> | FieldReadFunction<any>,
-	_sum?: FieldPolicy<any> | FieldReadFunction<any>,
 	body?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	title?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -670,10 +587,6 @@ export type NoteMinAggregateFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	title?: FieldPolicy<any> | FieldReadFunction<any>,
 	updatedAt?: FieldPolicy<any> | FieldReadFunction<any>
-};
-export type NoteSumAggregateKeySpecifier = ('id' | NoteSumAggregateKeySpecifier)[];
-export type NoteSumAggregateFieldPolicy = {
-	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type QueryKeySpecifier = ('aggregateNote' | 'findFirstNote' | 'groupByNote' | 'note' | 'notes' | QueryKeySpecifier)[];
 export type QueryFieldPolicy = {
@@ -700,10 +613,6 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | NoteKeySpecifier | (() => undefined | NoteKeySpecifier),
 		fields?: NoteFieldPolicy,
 	},
-	NoteAvgAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | NoteAvgAggregateKeySpecifier | (() => undefined | NoteAvgAggregateKeySpecifier),
-		fields?: NoteAvgAggregateFieldPolicy,
-	},
 	NoteCountAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | NoteCountAggregateKeySpecifier | (() => undefined | NoteCountAggregateKeySpecifier),
 		fields?: NoteCountAggregateFieldPolicy,
@@ -719,10 +628,6 @@ export type StrictTypedTypePolicies = {
 	NoteMinAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | NoteMinAggregateKeySpecifier | (() => undefined | NoteMinAggregateKeySpecifier),
 		fields?: NoteMinAggregateFieldPolicy,
-	},
-	NoteSumAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
-		keyFields?: false | NoteSumAggregateKeySpecifier | (() => undefined | NoteSumAggregateKeySpecifier),
-		fields?: NoteSumAggregateFieldPolicy,
 	},
 	Query?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | QueryKeySpecifier | (() => undefined | QueryKeySpecifier),

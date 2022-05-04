@@ -1,4 +1,4 @@
-mutation UpdateNote($id: Int!, $data: NoteUpdateInput!) {
+mutation UpdateNote($id: String!, $data: NoteUpdateInput!) {
   updateNote(data: $data, where: { id: $id }) {
     ...NoteFields
   }

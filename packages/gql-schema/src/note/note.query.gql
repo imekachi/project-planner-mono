@@ -1,4 +1,4 @@
-query NoteById($id: Int!) {
+query NoteById($id: String!) {
   note(where: { id: $id }) {
     ...NoteFields
   }

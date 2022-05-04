@@ -3,7 +3,7 @@ import NoteListItem, { NoteListItemProps } from './NoteListItem'
 
 describe('NoteListItem', () => {
   const mockNote: NoteListItemProps['note'] = {
-    id: 1,
+    id: '1',
     title: 'Test note',
   }
 

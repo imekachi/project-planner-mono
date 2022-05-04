@@ -19,7 +19,7 @@ const NoteEditor = (): JSX.Element => {
     error,
   } = useNoteByIdQuery({
     skip: !activeNoteId,
-    variables: { id: activeNoteId as number },
+    variables: { id: activeNoteId as NonNullable<typeof activeNoteId> },
   })
 
   console.log(`> useNoteByIdQuery:`, { loading, noteQuery, error })
