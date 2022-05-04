@@ -1,11 +1,8 @@
-import {
-  NoteUpdateInput,
-  useNoteByIdQuery,
-  useUpdateNoteMutation,
-} from 'gql-schema'
+import { NoteUpdateInput, useNoteByIdQuery } from 'gql-schema'
 import { useAtomValue } from 'jotai'
 import { useDebouncedCallback } from 'use-debounce'
 import { NOTE_EDITOR } from '../../config/noteEditor'
+import { useUpdateNoteMutationWithCacheSync } from '../../hooks/graphql/useUpdateNoteMutationWithCacheSync'
 import { activeNoteIdAtom } from '../../states/noteEditor'
 import NoteForm, { NoteFormProps } from './NoteForm'
 
@@ -27,7 +24,7 @@ const NoteEditor = (): JSX.Element => {
 
   console.log(`> useNoteByIdQuery:`, { loading, noteQuery, error })
 
-  const [updateNoteMutation] = useUpdateNoteMutation()
+  const [updateNoteMutation] = useUpdateNoteMutationWithCacheSync()
 
   const debouncedUpdateNote = useDebouncedCallback<NoteFormProps['onChange']>(
     (newNote) => {

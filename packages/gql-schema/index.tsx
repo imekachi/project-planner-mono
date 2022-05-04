@@ -573,7 +573,7 @@ export type NoteByIdLazyQueryHookResult = ReturnType<typeof useNoteByIdLazyQuery
 export type NoteByIdQueryResult = Apollo.QueryResult<NoteByIdQuery, NoteByIdQueryVariables>;
 export const NotesDocument = gql`
     query Notes {
-  notes {
+  notes(orderBy: [{updatedAt: desc}]) {
     ...NoteFields
   }
 }

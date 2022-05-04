@@ -1,5 +1,5 @@
 query Notes {
-  notes {
+  notes(orderBy: [{ updatedAt: desc }]) {
     ...NoteFields
   }
 }
