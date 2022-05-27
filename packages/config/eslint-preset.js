@@ -11,8 +11,6 @@ module.exports = {
   },
   ignorePatterns: ['build/**/*.*', 'dist/**/*.*', 'node_modules/**/*.*'],
   rules: {
-    '@next/next/no-html-link-for-pages': 'off',
-    'react/jsx-key': 'off',
     'no-param-reassign': 'error',
     'no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'warn',
