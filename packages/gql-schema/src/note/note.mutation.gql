@@ -9,3 +9,9 @@ mutation CreateNote($data: NoteCreateInput!) {
     ...NoteFields
   }
 }
+
+mutation DeleteNote($id: String!) {
+  deleteNote(where: { id: $id }) {
+    ...NoteFields
+  }
+}
