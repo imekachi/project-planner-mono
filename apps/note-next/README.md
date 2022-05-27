@@ -1,9 +1,38 @@
+## Tasks
+
+- [x] render note list from API
+- [x] render note data in the form
+- [x] update notes
+  - [x] update title
+  - [x] update body
+- [x] create new notes
+- [ ] delete a note
+- [ ] light-dark theme
+- [ ] wysiwyg with markdown support
+
+---
+
+Supports async saving + retry + localStorage saving
+```tsx
+// each note will have its own
+type State = {
+  isDirty: boolean
+  isSaving: boolean
+  isError: boolean
+  note: Note
+}
+```
+- On demand - the state is created when there is an attempt to update the note data
+- Once the data is saved, the local storage cache and this state will be removed from the list
+
+---
+
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
