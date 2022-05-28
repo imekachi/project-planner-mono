@@ -1,12 +1,8 @@
-import { NoteUpdateInput, useNoteByIdQuery } from 'gql-schema'
+import { useNoteByIdQuery } from 'gql-schema'
 import { useAtom } from 'jotai'
-import { useDebouncedCallback } from 'use-debounce'
-import { NOTE_EDITOR } from '../../config/noteEditor'
-import { checkIsPlaceholderNote } from '../../domain/createNote'
-import { useCreateNoteMutationWithCacheSync } from '../../hooks/graphql/useCreateNoteMutationWithCacheSync'
-import { useUpdateNoteMutationWithCacheSync } from '../../hooks/graphql/useUpdateNoteMutationWithCacheSync'
+import { useDebouncedUpdateNoteMutation } from '../../hooks/useDebouncedUpdateNoteMutation'
 import { activeNoteIdAtom } from '../../states/noteEditor'
-import NoteForm, { NoteFormProps } from './NoteForm'
+import NoteForm from './NoteForm'
 
 const NoteEditor = (): JSX.Element => {
   // Get activeNoteId from the atom (a context)
@@ -26,45 +22,10 @@ const NoteEditor = (): JSX.Element => {
 
   console.log(`> useNoteByIdQuery:`, { loading, noteQuery, error })
 
-  // TODO: extract these into a custom hook
-  const [updateNoteMutation] = useUpdateNoteMutationWithCacheSync()
-  const [createNoteMutation] = useCreateNoteMutationWithCacheSync()
-  const debouncedUpdateNote = useDebouncedCallback<NoteFormProps['onChange']>(
-    async (updatedNote) => {
-      const isTitleChanged = updatedNote.title !== noteQuery?.note?.title
-      const isBodyChanged = updatedNote.body !== noteQuery?.note?.body
-      const isDirty = isTitleChanged || isBodyChanged
-
-      console.log(`> handleNoteChange:`, {
-        isTitleChanged,
-        isBodyChanged,
-        isDirty,
-        updatedNote,
-        dataNote: noteQuery?.note,
-      })
-
-      // If nothing changed, do nothing
-      if (!isDirty) return undefined
-
-      // If it's a placeholder note, create a new note instead
-      if (checkIsPlaceholderNote(updatedNote.id)) {
-        const newNote = await createNoteMutation(updatedNote)
-        if (newNote) {
-          setActiveNoteId(newNote.id)
-        }
-      } else {
-        const updateData: NoteUpdateInput = {
-          ...(isTitleChanged && { title: { set: updatedNote.title } }),
-          ...(isBodyChanged && { body: { set: updatedNote.body } }),
-        }
-
-        updateNoteMutation({
-          variables: { id: updatedNote.id, data: updateData },
-        })
-      }
-    },
-    NOTE_EDITOR.DEFERRED_SAVE_MS
-  )
+  const debouncedUpdateNote = useDebouncedUpdateNoteMutation({
+    currentNote: noteQuery?.note,
+    onCreateNewNote: (newNote) => setActiveNoteId(newNote.id),
+  })
 
   if (loading) {
     return <div>loading...</div>
