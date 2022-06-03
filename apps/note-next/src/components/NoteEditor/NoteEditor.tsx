@@ -27,10 +27,7 @@ const NoteEditor = (): JSX.Element => {
     onCreateNewNote: (newNote) => setActiveNoteId(newNote.id),
   })
 
-  if (loading) {
-    return <div>loading...</div>
-  }
-  if (error) {
+  if (!loading && error) {
     return (
       <div>
         <h2>Error: </h2>
@@ -38,10 +35,10 @@ const NoteEditor = (): JSX.Element => {
       </div>
     )
   }
-  if (!activeNoteId) {
+  if (!loading && !activeNoteId) {
     return <div>Select some note from the side bar</div>
   }
-  if (!noteQuery?.note) {
+  if (!loading && !noteQuery?.note) {
     return (
       <div>
         Note not found: <pre>id: {activeNoteId}</pre>
@@ -62,7 +59,11 @@ const NoteEditor = (): JSX.Element => {
           </span>
         </div>
       </div>
-      <NoteForm note={noteQuery.note} onChange={debouncedUpdateNote} />
+      <NoteForm
+        showLoader={loading}
+        note={noteQuery?.note}
+        onChange={debouncedUpdateNote}
+      />
     </div>
   )
 }

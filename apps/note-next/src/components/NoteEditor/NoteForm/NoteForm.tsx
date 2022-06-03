@@ -6,23 +6,28 @@ import NoteTitleInput from './NoteTitleInput'
 type NoteData = Pick<Note, 'id' | 'title' | 'body'>
 
 export type NoteFormProps = {
-  note: NoteData
+  note: NoteData | null | undefined
   onChange: (updatedNote: NoteData) => void
+  showLoader?: boolean
 }
 
-const NoteForm = ({ note, onChange }: NoteFormProps): JSX.Element => {
-  const { id, title, body } = note
+const NoteForm = ({
+  note,
+  onChange,
+  showLoader,
+}: NoteFormProps): JSX.Element => {
+  const { id, title, body } = note ?? {}
 
-  const [inputTitle, setInputTitle] = useState(title)
-  const [inputBody, setInputBody] = useState(body)
+  const [inputTitle, setInputTitle] = useState(title ?? '')
+  const [inputBody, setInputBody] = useState(body ?? '')
 
   // Update form state with new title and body props only when noteId changes
   useEffect(() => {
     if (id) {
-      if (inputTitle !== title) {
+      if (title && inputTitle !== title) {
         setInputTitle(title)
       }
-      if (inputBody !== body) {
+      if (body && inputBody !== body) {
         setInputBody(body)
       }
     }
@@ -31,13 +36,23 @@ const NoteForm = ({ note, onChange }: NoteFormProps): JSX.Element => {
   }, [id, title, body])
 
   useEffect(() => {
-    onChange({ id, title: inputTitle, body: inputBody })
+    if (id) {
+      onChange({ id, title: inputTitle, body: inputBody })
+    }
   }, [id, inputBody, inputTitle, onChange])
 
   return (
-    <form className="mx-auto">
-      <NoteTitleInput value={inputTitle} onChange={setInputTitle} />
-      <NoteBodyInput value={inputBody} onChange={setInputBody} />
+    <form className="mx-auto space-y-4">
+      <NoteTitleInput
+        showLoader={showLoader}
+        value={inputTitle}
+        onChange={setInputTitle}
+      />
+      <NoteBodyInput
+        showLoader={showLoader}
+        value={inputBody}
+        onChange={setInputBody}
+      />
     </form>
   )
 }
