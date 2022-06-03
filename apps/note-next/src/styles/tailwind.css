@@ -18,7 +18,59 @@
   [type='week'],
   [multiple],
   textarea,
+  .skeleton.input-field,
   select {
     @apply rounded-lg border-neutral-300 focus:border-blue-300 focus:ring-2 focus:ring-blue-200 placeholder:text-neutral-300;
+  }
+
+  .input-field {
+    appearance: none;
+    background-color: #fff;
+    border-color: #6b7280;
+    border-width: 1px;
+    border-radius: 0px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-shadow: 0 0 #0000;
+  }
+}
+
+@layer components {
+  @keyframes animation-wave {
+    0% {
+      transform: translateX(-100%); 
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .skeleton {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.08);
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+    overflow: hidden
+  }
+
+  .skeleton.-text {
+    transform-origin: 0px 55%;
+    transform: scale(1, 0.6);
+  }
+
+  .skeleton::before {
+    content: '\00a0';
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.06), transparent);
+    animation: animation-wave 1.6s linear 0.5s infinite; 
   }
 }
